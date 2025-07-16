@@ -154,6 +154,26 @@ h2 {
     margin: 0.5rem 0;
 }
 
+/* Chatbot Section */
+.chatbot {
+    text-align: center;
+}
+
+.chatbot-container {
+    max-width: 600px;
+    margin: 2rem auto 0;
+    border-radius: 8px;
+    overflow: hidden; /* Ensures the iframe corners are also rounded */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+#ai-chat-frame {
+    width: 100%;
+    height: 418px;
+    border: none;
+    display: block; /* Removes extra space under the iframe */
+}
+
 /* Footer */
 footer {
     background-color: #2c3e50;
