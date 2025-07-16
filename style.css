@@ -157,21 +157,29 @@ h2 {
 /* Chatbot Section */
 .chatbot {
     text-align: center;
+    background-color: #ffffff; /* Use a consistent white background */
+}
+
+.chatbot p {
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .chatbot-container {
     max-width: 600px;
     margin: 2rem auto 0;
-    border-radius: 8px;
-    overflow: hidden; /* Ensures the iframe corners are also rounded */
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    border-radius: 12px; /* Softer corners */
+    overflow: hidden;    /* Keep the iframe inside the rounded corners */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08); /* A more subtle shadow */
+    border: 1px solid #e9e9e9; /* A light border to define the element */
 }
 
 #ai-chat-frame {
     width: 100%;
     height: 418px;
     border: none;
-    display: block; /* Removes extra space under the iframe */
+    display: block; /* Remove bottom spacing */
 }
 
 /* Footer */
