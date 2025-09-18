@@ -98,7 +98,21 @@
     </footer>
 
     
-    <script defer type="text/javascript" id="chatbot-initials-script" src="https://chat-bbl.noform.ai/script-chatbot.js" data-server-url="https://app.noform.ai" data-bot-id="68c22d707d1efd012b873b33"></script>
-  
+   <script>
+  // Delay (ms) before the widget is even loaded
+  const WIDGET_DELAY_MS = 30000; // 30 seconds
+
+  setTimeout(() => {
+    const s = document.createElement('script');
+    s.defer = true;
+    s.type = 'text/javascript';
+    s.id = 'chatbot-initials-script';
+    s.src = 'https://chat-bbl.noform.ai/script-chatbot.js';
+    s.dataset.serverUrl = 'https://app.noform.ai';
+    s.dataset.botId = '68c22d707d1efd012b873b33';
+    document.head.appendChild(s);
+  }, WIDGET_DELAY_MS);
+</script>
+
 </body>
 </html> 
