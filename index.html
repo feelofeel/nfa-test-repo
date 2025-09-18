@@ -97,45 +97,46 @@
         </div>
     </footer>
 
-    <script defer id="chatbot-initials-script"
+   <!-- Load the widget normally; don't auto-open -->
+<script defer id="chatbot-initials-script"
         src="https://chat-bbl.noform.ai/script-chatbot.js"
         data-server-url="https://app.noform.ai"
         data-bot-id="66445d8d1fabf9b25b83e53f"
-        data-open-widget="false"></script>
-  
+        data-open-widget="false"
+        await-before-init-seconds="0"></script>
+
+<!-- Open the bubble after 30s -->
 <script>
-  // Open the chat bubble after 30 seconds (30,000 ms)
-  (function openBubbleAfterDelay() {
-    const DELAY_MS = 30000;
+(function () {
+  var DELAY_MS = 30000;
 
-    // Wait until the iframe is inserted
-    function whenIframeReady(cb) {
-      const iframe = document.getElementById('botscrew-widget');
-      if (iframe && iframe.contentWindow) return cb(iframe);
-
-      // Observe DOM until the widget arrives
-      const obs = new MutationObserver(() => {
-        const ifr = document.getElementById('botscrew-widget');
-        if (ifr && ifr.contentWindow) {
-          obs.disconnect();
-          cb(ifr);
-        }
-      });
-      obs.observe(document.documentElement, { childList: true, subtree: true });
+  function openWidgetNow() {
+    var ifr = document.getElementById('botscrew-widget');
+    if (!ifr || !ifr.contentWindow) return false;
+    try {
+      var origin = new URL(ifr.src).origin; // e.g. https://chat-bbl.noform.ai
+      ifr.contentWindow.postMessage({ type: 'open-widget' }, origin);
+    } catch (_) {
+      // very safe fallback
+      ifr.contentWindow.postMessage({ type: 'open-widget' }, '*');
     }
+    return true;
+  }
 
-    whenIframeReady((iframe) => {
-      setTimeout(() => {
-        try {
-          const targetOrigin = new URL(iframe.src).origin; // e.g. https://chat-bbl.noform.ai
-          iframe.contentWindow.postMessage({ type: 'open-widget' }, targetOrigin);
-        } catch (e) {
-          // Fallback if URL parsing fails (rare)
-          iframe.contentWindow.postMessage({ type: 'open-widget' }, '*');
-        }
-      }, DELAY_MS);
-    });
-  })();
+  function scheduleOpen() {
+    setTimeout(function tryOpen() {
+      // If iframe isn't ready yet, keep poking until it is
+      if (!openWidgetNow()) setTimeout(tryOpen, 500);
+    }, DELAY_MS);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', scheduleOpen);
+  } else {
+    scheduleOpen();
+  }
+})();
 </script>
+
 </body>
 </html> 
