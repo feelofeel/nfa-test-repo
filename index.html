@@ -71,8 +71,9 @@
                 <p>Have a quick question? Our AI-powered assistant is here to help 24/7.</p>
                 <div class="chatbot-container">
                     
-    <iframe id="ai-chat-frame" src="https://emb-chat-stg.noform.app/?pid=68a5796c1a877ddbb692c1df&backendURL=https://stg.noform.ai" style="width: 100%; max-width: 600px; height: 418px; border: none;"></iframe>
-    <script type="text/javascript" src="https://emb-chat-stg.noform.app/snippet-bundle.js"></script>
+  
+    <iframe id="ai-chat-frame" src="https://emb-chat.noform.ai/?pid=685c023d6e2280f9726693d7&backendURL=https://app.noform.ai" style="width: 100%; max-width: 600px; height: 418px; border: none;"></iframe>
+    <script type="text/javascript" src="https://emb-chat.noform.ai/snippet-bundle.js"></script>
   
                 </div>
             </div>
@@ -101,42 +102,11 @@
 <script defer id="chatbot-initials-script"
         src="https://chat-bbl.noform.ai/script-chatbot.js"
         data-server-url="https://app.noform.ai"
-        data-bot-id="68c22d707d1efd012b873b33"
+        data-bot-id="685c023d6e2280f9726693d7"
         data-open-widget="false"
         await-before-init-seconds="0"></script>
 
 <!-- Open the bubble after 30s -->
-<script>
-(function () {
-  var DELAY_MS = 30000;
-
-  function openWidgetNow() {
-    var ifr = document.getElementById('botscrew-widget');
-    if (!ifr || !ifr.contentWindow) return false;
-    try {
-      var origin = new URL(ifr.src).origin; // e.g. https://chat-bbl.noform.ai
-      ifr.contentWindow.postMessage({ type: 'open-widget' }, origin);
-    } catch (_) {
-      // very safe fallback
-      ifr.contentWindow.postMessage({ type: 'open-widget' }, '*');
-    }
-    return true;
-  }
-
-  function scheduleOpen() {
-    setTimeout(function tryOpen() {
-      // If iframe isn't ready yet, keep poking until it is
-      if (!openWidgetNow()) setTimeout(tryOpen, 500);
-    }, DELAY_MS);
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', scheduleOpen);
-  } else {
-    scheduleOpen();
-  }
-})();
-</script>
 
 </body>
 </html> 
